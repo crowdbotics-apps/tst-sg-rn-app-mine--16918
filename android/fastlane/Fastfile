@@ -43,20 +43,20 @@ platform(:android) do
   lane(:deploy_appetize) do
     gradle(task: 'assemble', build_type: 'Release')
 
-    public_key = get_appetize_public_key('android', base_name)
+#     public_key = get_appetize_public_key('android', base_name)
 
-    appetize(
-      path: get_last_apk_path,
-      public_key: public_key,
-      platform: 'android',
-      note: base_name
-    )
+#     appetize(
+#       path: get_last_apk_path,
+#       public_key: public_key,
+#       platform: 'android',
+#       note: base_name
+#     )
 
-    update_url(
-      platform: 'android',
-      public_key: public_key || lane_context[SharedValues::APPETIZE_PUBLIC_KEY],
-      url: lane_context[SharedValues::APPETIZE_APP_URL]
-    )
+#     update_url(
+#       platform: 'android',
+#       public_key: public_key || lane_context[SharedValues::APPETIZE_PUBLIC_KEY],
+#       url: lane_context[SharedValues::APPETIZE_APP_URL]
+#     )
   end
 
   desc('create a new android app bundle build')
@@ -106,7 +106,7 @@ def get_appetize_public_key(platform, base_name)
   item = JSON.parse(response.body)['data'].find do |app_app|
     app_app['note'] == base_name && app_app['platform'] == platform
   end
-
+  
   item['publicKey']
 end
 
