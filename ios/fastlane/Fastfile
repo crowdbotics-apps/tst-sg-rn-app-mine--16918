@@ -118,19 +118,19 @@ platform(:ios) do
 
     zipped_bundle = zip(path: app_path, output_path: File.join(tmp_path, 'app.zip'))
 
-    public_key = get_appetize_public_key('ios', base_name)
+#     public_key = get_appetize_public_key('ios', base_name)
 
-    appetize(
-      path: zipped_bundle,
-      public_key: public_key,
-      note: base_name
-    )
+#     appetize(
+#       path: zipped_bundle,
+#       public_key: public_key,
+#       note: base_name
+#     )
 
-    update_url(
-      platform: 'ios',
-      public_key: public_key || lane_context[SharedValues::APPETIZE_PUBLIC_KEY],
-      url: lane_context[SharedValues::APPETIZE_APP_URL]
-    )
+#     update_url(
+#       platform: 'ios',
+#       public_key: public_key || lane_context[SharedValues::APPETIZE_PUBLIC_KEY],
+#       url: lane_context[SharedValues::APPETIZE_APP_URL]
+#     )
   end
 
   # Update app URL in CB app DB
