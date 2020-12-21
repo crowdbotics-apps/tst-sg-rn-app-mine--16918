@@ -99,24 +99,24 @@ platform(:ios) do
 
   desc('Deployment to Appetize')
   lane(:deploy_appetize) do
-    init_app
+#     init_app
 
-    build_setup
+#     build_setup
 
     tmp_path = '/tmp/fastlane_build'
 
-    # Not possible to use gym here because it will only create an ipa archive
-    xcodebuild(
-      configuration: 'Release',
-      sdk: 'iphonesimulator',
-      derivedDataPath: tmp_path,
-      xcargs: "CONFIGURATION_BUILD_DIR=#{tmp_path}",
-      scheme: base_name
-    )
+#     # Not possible to use gym here because it will only create an ipa archive
+#     xcodebuild(
+#       configuration: 'Release',
+#       sdk: 'iphonesimulator',
+#       derivedDataPath: tmp_path,
+#       xcargs: "CONFIGURATION_BUILD_DIR=#{tmp_path}",
+#       scheme: base_name
+#     )
 
-    app_path = Dir[File.join(tmp_path, '**', '*.app')].last
+#     app_path = Dir[File.join(tmp_path, '**', '*.app')].last
 
-    zipped_bundle = zip(path: app_path, output_path: File.join(tmp_path, 'app.zip'))
+#     zipped_bundle = zip(path: app_path, output_path: File.join(tmp_path, 'app.zip'))
 
 #     public_key = get_appetize_public_key('ios', base_name)
 
